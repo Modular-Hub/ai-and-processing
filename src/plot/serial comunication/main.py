@@ -1,7 +1,8 @@
 import serial
 import os
 
-file_name = 'test.csv'
+file_name = './data/test-02.csv'
+# os.execv("rm -f ./data/*")
 
 serial_inst = serial.Serial()
 serial_inst.port = '/dev/ttyACM0'
@@ -14,4 +15,5 @@ while True:
         print(value.decode('utf'))
 
         file = open(file_name,'ab')
+
         file.write(value)
