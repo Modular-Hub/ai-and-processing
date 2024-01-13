@@ -1,19 +1,40 @@
-import serial
+from datetime import date
+# import serial
 import os
 
 file_name = './data/test-02.csv'
 # os.execv("rm -f ./data/*")
 
-serial_inst = serial.Serial()
-serial_inst.port = '/dev/ttyACM0'
-serial_inst.baudrate = 115200
+# Test directories creation
+today = str(date.today())
+try:
+    os.mkdir(today)
+except OSError as error:
+   print(error)
 
-serial_inst.open()
-while True:
-    if serial_inst.in_waiting:
-        value = serial_inst.read()
-        print(value.decode('utf'))
+electrode = today + "/t6-c4"
+try:
+    os.mkdir(electrode)
+except OSError as error:
+   print(error)
 
-        file = open(file_name,'ab')
+data = electrode + "/data"
+try:
+    os.mkdir(data)
+except OSError as error:
+    print(error)
 
-        file.write(value)
+
+# serial_inst = serial.Serial()
+# serial_inst.port = '/dev/ttyACM0'
+# serial_inst.baudrate = 115200
+
+# serial_inst.open()
+# while True:
+#     if serial_inst.in_waiting:
+#         value = serial_inst.read()
+#         print(value.decode('utf'))
+
+#         file = open(file_name,'ab')
+
+#         file.write(value)

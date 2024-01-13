@@ -22,7 +22,6 @@ for i in range(0, 5):
     yfdata[i] = yfdata[i][2000:8000]
 
 
-
 # Plot FFT direct
 fig, axs = plt.subplots(5)
 for i in range(0, 5):
@@ -30,13 +29,11 @@ for i in range(0, 5):
     # axs[i].plot(fft(ydata[i]), fftfreq())
     axs[i].plot(xf[i], 2.0/N*np.abs(yfdata[i][0:N//2]))
 
-
 # Plot Inverse FFT
 fig2, axs2 = plt.subplots(6)
 left = 1000
 for i in range(0, 6):
     invfft = ifft(yfdata[0][left*i:(left + (1000 * i) - 1)])
     axs2[i].plot(invfft)
-
 
 plt.show()
