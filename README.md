@@ -6,7 +6,7 @@
 - [ ] Insertar metadatos de cada prueba
 - [x] Plotear por bandas y guardarlo en imagenes dentro de la carpeta de la prueba
 - [x] Guardar por separado cada una de las bandas (asociadas a su # de prueba) de IFFT (IFFT se genera por bandas, no por la data completa)
-- [ ] Plotear IFFT completa y por bandas y guardarlo en imagenes dentro de la carpeta de la prueba
+- [x] Plotear IFFT completa y por bandas y guardarlo en imagenes dentro de la carpeta de la prueba
 
 
 ## Setup configuration
