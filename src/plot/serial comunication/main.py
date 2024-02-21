@@ -11,7 +11,7 @@ try:
 except OSError as error:
    print(error)
 
-electrode = today + "/ruido"
+electrode = today + "/t5-c3"
 try:
     os.mkdir(electrode)
 except OSError as error:
@@ -28,7 +28,7 @@ serial_inst.port = '/dev/ttyACM0'
 serial_inst.baudrate = 115200
 serial_inst.open()
 
-file_name = data + '/test.csv'
+file_name = data + '/NO.csv'
 while True:
     if serial_inst.in_waiting:
         value = serial_inst.read()
