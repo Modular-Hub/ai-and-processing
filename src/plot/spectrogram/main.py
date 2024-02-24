@@ -1,17 +1,25 @@
-import librosa
-import librosa.display
 import matplotlib.pyplot as plt
+import numpy as np
+import pywt
 
-audio_file = "Old Soul.mp3"
-y, sr = librosa.load(audio_file)
+MAX_RANGE = 256
+data = np.fromfile("./EEG_test_data.csv", dtype=int, sep=",")
+coef, freq = pywt.cwt(data, np.arange(1, MAX_RANGE), "gaus1")
 
-spectrogram = librosa.feature.melspectrogram(y=y, sr=sr)
-spectrogram_db = librosa.power_to_db(spectrogram)
+## Plot
+fig, ax = plt.subplots(figsize=(10, 10))
+ax.set_xticks([])
+ax.set_yticks([])
+ax.tick_params(axis="both", which="both", length=0)
+plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
-plt.figure(figsize=(10, 5))
-librosa.display.specshow(spectrogram_db, x_axis='time', y_axis='mel')
-plt.colorbar(format='%+2.0f dB')
-plt.title('Spectrogram')
-
-plt.savefig('spectrogram.png')
-plt.show()
+ax.imshow(
+    coef,
+    extent=[-1, 1, 1, MAX_RANGE],
+    interpolation="bilinear",
+    cmap="plasma",
+    aspect="auto",
+    vmax=abs(coef).max(),
+    vmin=-abs(coef).max(),
+)
+plt.savefig("test.jpg", bbox_inches="tight", dpi=500)
