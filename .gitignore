@@ -1,5 +1,6 @@
 .env/
-*.jpg
-*.png
 .vscode/
 .DS_Store
+**/__pycache__/
+*.png
+*.jpg
