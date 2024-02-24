@@ -5,7 +5,7 @@ from os import mkdir, path
 
 SAVE_FIGS_FILES = 0b11
 NPROOFS = 20
-FOLDER = f"{path.abspath(".")}/../serial comunication/2024-01-13/t3-c5/SI/"
+FOLDER = f"{path.abspath(".")}/../../data/2024-01-13/t3-c5/SI/"
 
 # File handler
 def writeInFile(path, data):
