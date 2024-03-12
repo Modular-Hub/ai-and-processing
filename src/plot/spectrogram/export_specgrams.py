@@ -4,11 +4,11 @@ import specgram
 
 ELEC_COMB = ["t5-c3", "t6-c4"]
 TEST_TYPE = "NO"
-DATA_PATH = f"{path.abspath(".")}/../../data/2024-02-17/{ELEC_COMB[1]}"
+DATA_PATH = f"{path.abspath('.')}/../../data/2024-03-11/{ELEC_COMB[0]}"
 FILE_PATH = f"{DATA_PATH}/{TEST_TYPE}.csv"
 
-# Images subfolder
-IMGS_PATH = f"{DATA_PATH}/{TEST_TYPE}_imgs"
+# Images sub folder
+IMGS_PATH = f"{DATA_PATH}/../{TEST_TYPE}_imgs"
 try:
     mkdir(IMGS_PATH)
 except OSError as error:
@@ -28,4 +28,4 @@ for line in lines:
 data = np.vstack(data)
 
 for n, proof in enumerate(data):
-    specgram.specgram_save(proof, (n + 1), IMGS_PATH)
+    specgram.spectrogram_save(proof, (n + 1 + 0), IMGS_PATH)
