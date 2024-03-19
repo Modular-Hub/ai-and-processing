@@ -2,13 +2,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 from os import path
 
-SAVE_FIGS_FILES = 0b11
-NPROOFS = 20
-FOLDER = f"{path.abspath(".")}/../serial comunication/2024-01-13/t6-c4/NO/"
+
+NPROOFS = 2
+# FOLDER = f"{path.abspath(".")}/../serial comunication/2024-01-13/t6-c4/NO/"
+FOLDER = f"./test.csv"
 
 
 # Read test file
-with open(f'{FOLDER}test.csv', 'r') as file:
+with open(f'test.csv', 'r') as file:
     lines = file.readlines()
 
 # Split data and fix format
@@ -21,5 +22,14 @@ for line in lines:
 data = np.vstack(data)
 N = data.shape[1]
 
-plt.plot(data[5])
+## 4000
+x1, y1 = [0, 2000], [4000, 4000]
+
+plt.plot(x1, y1, marker = 'o')
+
+for idx, d in enumerate(data):
+    print(max(d))
+    plt.plot(d, label=f"line{idx+1}")
+
+plt.legend()
 plt.show()
